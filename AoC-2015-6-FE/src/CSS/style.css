@@ -1,0 +1,67 @@
+*, :before, :after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #c6c9ff;
+}
+
+.background {
+    position: relative;
+    margin: auto;
+    width: 1000px;
+    height: 1000px;
+    background-color: #000043;
+    box-shadow: 1px 1px 8px black;
+}
+
+.input {
+    position: absolute;
+    padding: calc(1000px / 5 * 2) calc(1000px / 3) ;
+    min-width: calc(1000px / 3);
+    min-height: calc(1000px / 5);
+    display: flex;
+    flex-direction: column;
+    visibility: visible;
+}
+
+
+.area-label {
+    margin-bottom: 15px;
+    color: #fdff78;
+    width: inherit;
+    text-align: center;
+    font-weight: 600;
+}
+
+.textarea {
+    width: inherit;
+    height: 150px;
+    background-color: #c6c9ff;
+    box-shadow: 1px 1px 8px #fdff78;
+}
+
+.button {
+    margin: 20px calc((100% - 200px) /2);
+    padding: 10px;
+    width: 200px;
+    border-radius: 5px;
+    background-color: #000035;
+    color: #fdff78;
+    box-shadow: 1px 1px 10px #fdff78;
+    text-align: center;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.button:active {
+    box-shadow: 1px 1px 2px #fdff78;
+    transform: translate(2px 2px);
+}
+
+.lights {
+
+}
+
+.result {
+
+}
