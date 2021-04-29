@@ -1,26 +1,26 @@
+import '../css/style.css';
 
-
-const start = () => {
-    const input = getInput();
+const start = input => {
+    alert("tu jsem");
     const instructions = transformInput(input);
     const arrayOfObjects = instructions.map(item => makeObject(item));
     sendPostRequest(arrayOfObjects);
 };
 
-const getInput = () => {
-    const textarea = document.querySelector(".textarea");
-    const input = textarea.value;
-    textarea.value = '';
-
-    return input;
-};
+// const getInput = () => {
+//     const textarea = document.querySelector(".textarea");
+//     const input = textarea.value;
+//     textarea.value = '';
+//
+//     return input;
+// };
 
 const transformInput = input => {
-    const arrayOfStringsInstructions = input.split("\n");
-    const arrayOfInstructionsParts = arrayOfStringsInstructions.map(instructionString => instructionString.split(' '))  // Split string into words
+    const arrayOfStringInstructions = input.split("\n");
+    const arrayOfInstructionParts = arrayOfStringInstructions.map(instructionString => instructionString.split(' '))  // Split string into words
             .map(instructionParts => {
                 if (instructionParts.includes("turn")) { // Get rid of unnecessary word turn from 'turn on' and 'turn of' => all arrays have the same length
-                    instructionParts.shift();
+                    instructionParts.shift();            // 'turn' is always on index 0.
                 }
                 instructionParts.splice(instructionParts.indexOf('through'), 1); // Get rid of unnecessary word 'through'
                 return instructionParts;
@@ -30,7 +30,7 @@ const transformInput = input => {
                 return instructionParts;
             });
 
-    return arrayOfInstructionsParts;
+    return arrayOfInstructionParts;
 };
 
 const makeObject = array => {
@@ -44,9 +44,27 @@ const makeObject = array => {
 };
 
 const sendPostRequest = arrayOfObjects => {
-    fetch('http://localhost/5000', {
+
+    console.log(arrayOfObjects);
+
+    //fetch('http://localhost:5000/').then(response => response.json()).then(data => console.log(data));
+
+    // fetch('http://localhost:5000/', {
+    //     method: "POST",
+    //     headers: {
+    //         'Accept': 'application/json',
+    //         'Content-Type': 'text/plain'
+    //     },
+    //     body: JSON.stringify(arrayOfObjects)
+    // }).then(response => response.json())
+    //     .then(data => {
+    //         console.log(data);
+    //     })
+
+    fetch('http://localhost:5000/', {
         method: "POST",
         headers: {
+            'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(arrayOfObjects)
@@ -54,6 +72,17 @@ const sendPostRequest = arrayOfObjects => {
         .then(data => {
             console.log(data);
         })
+
+
 };
 
-document.querySelector(".button").addEventListener('click', start);
+const form = document.querySelector("form");
+form.addEventListener('submit', event => {
+    event.preventDefault();
+
+    const formDataObject = new FormData(event.target);
+    const formData = formDataObject.get("textarea");
+    form.querySelector("textarea").value = '';
+    start(formData);
+
+});

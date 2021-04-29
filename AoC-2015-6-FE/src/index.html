@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Christmas lights</title>
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="js/index.js" defer></script>
 </head>
 <body>
     <div class="background">
-        <div class="input">
+        <form class="input">
             <label id="area-label" class="area-label">Insert your instructions below</label>
-            <textarea class="textarea"></textarea>
-            <div class="button">Lit the lights!</div>
-        </div>
+            <textarea class="textarea" name="textarea"></textarea>
+            <button class="button" type="submit">Lit the lights!</button>
+        </form>
         <div class="lights"></div>
         <div class="result"></div>
     </div>
+
 </body>
 </html>
