@@ -2,6 +2,7 @@ import '../css/style.css';
 
 const start = input => {
     alert("tu jsem");
+    // TODO: validace vstupu
     const instructions = transformInput(input);
     const arrayOfObjects = instructions.map(item => makeObject(item));
     sendPostRequest(arrayOfObjects);

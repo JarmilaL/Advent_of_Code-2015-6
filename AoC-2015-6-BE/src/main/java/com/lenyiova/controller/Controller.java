@@ -1,8 +1,9 @@
-package com.lenyiova;
+package com.lenyiova.controller;
 
+import com.lenyiova.model.InputHandler;
+import com.lenyiova.model.Instruction;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -24,19 +25,14 @@ public class Controller {
 //    }
 
     @PostMapping(value = "/")
-    public Instruction handlePostRequest(@RequestBody List<Map<String, Object>> instructions) {
+    public Instruction handlePostRequest(@RequestBody List<Map<String, String>> instructions) {
 
-        List<Map<String,Object>> maps = new ArrayList<Map<String,Object>>();
-        maps.addAll(instructions);
+        InputHandler inputHandler = new InputHandler();
+        List<Instruction> list = inputHandler.handleInput(instructions);
 
-        for (int i = 0; i < maps.size(); i++) {
-            System.out.println(maps.get(i).keySet());
-            System.out.println(maps.get(i).values());
-        }
+        for (Instruction i : list) System.out.println(i);
 
-//        for (int i = 0; i < instructions.length; i++) {
-//            System.out.println(instructions[i]);
-//        }
+
 
         Instruction pokus = new Instruction("on", 34, 35, 62, 70);
         return pokus;
