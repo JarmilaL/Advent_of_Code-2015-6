@@ -1,7 +1,6 @@
 package com.lenyiova.controller;
 
-import com.lenyiova.model.InputHandler;
-import com.lenyiova.model.Instruction;
+import com.lenyiova.model.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,24 +16,20 @@ public class Controller {
         return pokus;
     }
 
-//    @PostMapping(value = "/", consumes = "text/plain")
-//    public Instruction handlePostRequest(@RequestBody String instructions) {
-//        System.out.println(instructions);
-//        Instruction pokus = new Instruction("on", 34, 35, 62, 70);
-//        return pokus;
-//    }
-
     @PostMapping(value = "/")
-    public Instruction handlePostRequest(@RequestBody List<Map<String, String>> instructions) {
+    public int handlePostRequest(@RequestBody List<Map<String, String>> instructions) {
 
-        InputHandler inputHandler = new InputHandler();
-        List<Instruction> list = inputHandler.handleInput(instructions);
+        Mapper<Map<String, String>, Instruction> mapper = new InstructionMapper<>();
+        List<Instruction> listOfInstructions = mapper.mapAll(instructions);
+        //for (Instruction i : listOfInstructions) System.out.println(i);
 
-        for (Instruction i : list) System.out.println(i);
+        // TODO: User can define number of lights and rectangle side length.
+        ChristmasLights lights = new ChristmasLights(1_000_000, 1_000);
 
+        Processor<Instruction, ChristmasLights> processor = new InstructionProcessor<>();
+        lights = processor.processAll(listOfInstructions, lights);
 
-
-        Instruction pokus = new Instruction("on", 34, 35, 62, 70);
-        return pokus;
+        System.out.println(lights.countLitLights());
+        return lights.countLitLights();
     }
 }
