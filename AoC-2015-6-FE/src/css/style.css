@@ -10,19 +10,28 @@ body {
     position: relative;
     margin: auto;
     width: 1000px;
-    height: 1000px;
+    height: 750px;
     background-color: #000043;
     box-shadow: 1px 1px 8px black;
 }
 
-.input {
+.backgroundLights {
     position: absolute;
-    padding: calc(1000px / 5 * 2) calc(1000px / 3) ;
+    width: 100%;
+    height: auto;
+    opacity: 0.7;
+}
+
+.box {
+    position: absolute;
+    padding: calc(750px / 5 * 2) calc(1000px / 3) ;
     min-width: calc(1000px / 3);
-    min-height: calc(1000px / 5);
+    min-height: calc(750px / 5);
+}
+
+.input {
     display: flex;
     flex-direction: column;
-    visibility: visible;
 }
 
 
@@ -63,9 +72,26 @@ body {
 }
 
 .lights {
-
+    display: flex;
+    flex-direction: column;
+    color: #fdff78;
+    text-align: center;
+    font-size: 14px;
 }
 
 .result {
+    font-size: 20px;
+    font-weight: bold;
+}
 
+.footer {
+    margin: auto;
+    position: absolute;
+    bottom: 0;
+    color: #fdff78;
+    text-align: center;
+}
+.footer a {
+    color: #fdff78;
+    text-decoration: none;
 }
