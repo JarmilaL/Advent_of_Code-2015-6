@@ -1,11 +1,9 @@
 
 export default class Fetcher {
 
-    fetchLightsCount = arrayOfObjects => {
+    fetchLightsCount = async arrayOfObjects => {
 
-        console.log(arrayOfObjects);
-
-        fetch('http://localhost:5000/', {
+        const numberOfLights = await fetch('http://localhost:5000/', {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -16,5 +14,7 @@ export default class Fetcher {
             .then(data => {
                 return data;
             });
+
+        return numberOfLights;
     };
 }

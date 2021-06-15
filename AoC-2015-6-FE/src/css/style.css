@@ -20,6 +20,7 @@ body {
     width: 100%;
     height: auto;
     opacity: 0.7;
+    visibility: hidden;
 }
 
 .box {
@@ -36,7 +37,6 @@ body {
 
 
 .area-label {
-    margin-bottom: 15px;
     color: #fdff78;
     width: inherit;
     text-align: center;
@@ -48,6 +48,12 @@ body {
     height: 150px;
     background-color: #c6c9ff;
     box-shadow: 1px 1px 8px #fdff78;
+}
+
+.input p {
+    color: #fdff78;
+    text-align: center;
+    font-size: 12px;
 }
 
 .button {
@@ -72,24 +78,25 @@ body {
 }
 
 .lights {
-    display: flex;
+    display: none;
     flex-direction: column;
     color: #fdff78;
     text-align: center;
     font-size: 14px;
-}
-
-.result {
-    font-size: 20px;
     font-weight: bold;
 }
 
+.result {
+    font-size: 24px;
+}
+
 .footer {
-    margin: auto;
+    margin: 10px 320px;
     position: absolute;
     bottom: 0;
     color: #fdff78;
     text-align: center;
+    font-size: 14px;
 }
 .footer a {
     color: #fdff78;
