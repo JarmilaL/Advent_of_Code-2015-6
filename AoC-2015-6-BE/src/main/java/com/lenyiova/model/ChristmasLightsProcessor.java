@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class InstructionProcessor<T extends Instruction, S extends ChristmasLights> implements Processor<T, S>{
+public class ChristmasLightsProcessor<T extends Instruction, S extends ChristmasLights> implements Processor<T, S>{
 
     @Override
     public ChristmasLights process(@NotNull Instruction instruction, ChristmasLights lights) {

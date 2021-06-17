@@ -10,8 +10,10 @@ const init = () => {
 
         const formDataObject = new FormData(event.target);
         const formData = formDataObject.get("textarea");
+        const option = formDataObject.get("option");
+        console.log(option);
         form.querySelector("textarea").value = '';
-        start(formData);
+        start(formData, option);
 
     });
 
@@ -20,13 +22,18 @@ const init = () => {
 
 };
 
-const start = async input => {
+const start = async (input, option) => {
     // TODO: validace vstupu
     const inputHandler = new InputHandler();
     const arrayOfObjects = inputHandler.createObjectsFromInput(input);
 
     const renderer = new Renderer();
-    renderer.renderResultPage(await new Fetcher().fetchLightsCount(arrayOfObjects));
+    if (option === "old") {
+        renderer.renderResultPage(await new Fetcher().fetchLightsCount(arrayOfObjects), "There are", "lights lit on your christmas decoration.");
+    } else {
+        renderer.renderResultPage(await new Fetcher().fetchBrightness(arrayOfObjects), "Total Brightness of your lights is");
+    }
+
 };
 
 init();

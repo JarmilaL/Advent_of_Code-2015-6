@@ -3,13 +3,15 @@
 }
 
 body {
+    font-family: 'Raleway', sans-serif;
     background-color: #c6c9ff;
+    color: #fdff78;
 }
 
 .background {
     position: relative;
     margin: auto;
-    width: 1000px;
+    width: 900px;
     height: 750px;
     background-color: #000043;
     box-shadow: 1px 1px 8px black;
@@ -17,17 +19,52 @@ body {
 
 .backgroundLights {
     position: absolute;
-    width: 100%;
-    height: auto;
-    opacity: 0.7;
+    width: inherit;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 2s;
     visibility: hidden;
+}
+
+.snow {
+    background-image: url("../images/image/snow1.png"), url("../images/image/snow2.png"), url("../images/image/snow3.png");
+    animation: snow 20s linear infinite;
+}
+
+@keyframes snow {
+    0% {background-position: 0 0, 0 0, 0 0;}
+    100% {background-position: 500px 1000px, 400px 400px, 300px 300px}
+}
+
+.header {
+    padding: 20px;
+    text-align: center;
+    display: block;
+}
+
+.info {
+    text-align: center;
+    padding: 0 50px;
+    display: block;
+}
+
+.info p:first-child {
+    margin-top: 0;
+}
+
+.info p:last-child {
+    font-weight: 600;
 }
 
 .box {
     position: absolute;
-    padding: calc(750px / 5 * 2) calc(1000px / 3) ;
-    min-width: calc(1000px / 3);
+    padding: 0 calc(900px / 3);
+    min-width: calc(900px / 3);
     min-height: calc(750px / 5);
+}
+
+.radio {
+    margin-bottom: 20px;
 }
 
 .input {
@@ -37,23 +74,21 @@ body {
 
 
 .area-label {
-    color: #fdff78;
     width: inherit;
     text-align: center;
     font-weight: 600;
 }
 
 .textarea {
-    width: inherit;
+    width: 300px;
     height: 150px;
     background-color: #c6c9ff;
     box-shadow: 1px 1px 8px #fdff78;
 }
 
 .input p {
-    color: #fdff78;
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .button {
@@ -63,8 +98,8 @@ body {
     border: none;
     border-radius: 5px;
     text-decoration: none;
-    background-color: #000035;
     color: #fdff78;
+    background-color: #000035;
     box-shadow: 1px 1px 10px #fdff78;
     text-align: center;
     font-size: 14px;
@@ -78,9 +113,12 @@ body {
 }
 
 .lights {
+    position: absolute;
+    top: 250px;
+    left: 300px;
+    width: 300px;
     display: none;
     flex-direction: column;
-    color: #fdff78;
     text-align: center;
     font-size: 14px;
     font-weight: bold;
@@ -91,10 +129,9 @@ body {
 }
 
 .footer {
-    margin: 10px 320px;
+    margin: 10px 300px;
     position: absolute;
     bottom: 0;
-    color: #fdff78;
     text-align: center;
     font-size: 14px;
 }

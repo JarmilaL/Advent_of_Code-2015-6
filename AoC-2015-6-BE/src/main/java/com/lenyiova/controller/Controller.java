@@ -16,20 +16,24 @@ public class Controller {
         return pokus;
     }
 
-    @PostMapping(value = "/")
+    @PostMapping(value = "/lights")
     public int handlePostRequest(@RequestBody List<Map<String, String>> instructions) {
 
         Mapper<Map<String, String>, Instruction> mapper = new InstructionMapper<>();
         List<Instruction> listOfInstructions = mapper.mapAll(instructions);
-        //for (Instruction i : listOfInstructions) System.out.println(i);
 
         // TODO: User can define number of lights and rectangle side length.
         ChristmasLights lights = new ChristmasLights(1_000_000, 1_000);
 
-        Processor<Instruction, ChristmasLights> processor = new InstructionProcessor<>();
+        Processor<Instruction, ChristmasLights> processor = new ChristmasLightsProcessor<>();
         lights = processor.processAll(listOfInstructions, lights);
 
         System.out.println(lights.countLitLights());
         return lights.countLitLights();
+    }
+
+    @PostMapping(value = "/brightness")
+    public int handlePostRequest() {
+        return 255;
     }
 }
